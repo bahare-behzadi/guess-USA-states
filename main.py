@@ -15,10 +15,7 @@ while len(guess_lists) < 50:
     data_base = pandas.read_csv("50_states.csv")
     states_list = data_base["state"].to_list()
     if guess == "Exit":
-        not_guess_list = []
-        for each_state in states_list:
-            if each_state not in guess_lists:
-                not_guess_list.append(each_state)
+        not_guess_list = not_guess_list = [each_state for each_state in states_list if each_state not in guess_lists] 
         missing_data = pandas.DataFrame(not_guess_list)
         missing_data.to_csv("missing_states.csv")
         finish_game = turtle.Turtle()
